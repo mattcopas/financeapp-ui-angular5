@@ -5,6 +5,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { AccountsService } from './accounts.service';
 import { Account } from '../models/Account';
 
+import { environment } from '../../environments/environment';
+
 describe('AccountsService', () => {
 
     let injector: TestBed;
@@ -37,7 +39,7 @@ describe('AccountsService', () => {
             accountsService.getRawAccountsData().subscribe((response) => {});
 
             const request = httpMock.expectOne({
-                url: "http://localhost:8081/accounts",
+                url: environment.apiUrl + 'accounts',
                 method: 'GET'
             });
 

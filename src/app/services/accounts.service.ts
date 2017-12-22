@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Account } from '../models/Account';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AccountsService {
@@ -13,7 +14,7 @@ export class AccountsService {
         let headers: HttpHeaders = new HttpHeaders({
             Authorization: 'Bearer ' + token
         });
-        return this.httpClient.get<any>('http://localhost:8081/accounts', {headers: headers});
+        return this.httpClient.get<any>(environment.apiUrl + 'accounts', {headers: headers});
     };
 
     parseAccountsData(rawAccountsData): Account[] {
