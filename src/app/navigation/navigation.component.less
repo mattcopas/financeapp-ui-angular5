@@ -1,0 +1,22 @@
+// Navigation stuff
+@media (min-width: 800px) {
+    #mobile-navigation {
+        display: none;
+    }
+}
+
+nav {
+    & .mat-toolbar {
+        & button.mat-button {
+            & .active {
+                color: red;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    #main-navigation {
+        display: none;
+    }
+}

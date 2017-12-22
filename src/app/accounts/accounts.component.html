@@ -1,0 +1,44 @@
+<div layout="row" class="accounts">
+    <h1 class="mat-display-1">Accounts</h1>
+</div>
+
+<div class="">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+    </ng-container>
+
+    <!-- Balance Column -->
+    <ng-container matColumnDef="balance">
+      <mat-header-cell *matHeaderCellDef> Balance </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.balance | currency: element.currency}} </mat-cell>
+    </ng-container>
+
+    <!-- Currency Column -->
+    <ng-container matColumnDef="currency">
+      <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.currency}} </mat-cell>
+    </ng-container>
+
+    <!-- repeating Column -->
+    <ng-container matColumnDef="repeating">
+      <mat-header-cell *matHeaderCellDef> Repeating </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.repeating}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

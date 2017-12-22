@@ -1,0 +1,19 @@
+<!-- Mobile Navigation -->
+<nav id="mobile-navigation">
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item> Home </button>
+        <button mat-menu-item> Help </button>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>menu</mat-icon>
+    </button>
+</nav>
+
+<!-- Main Navigation -->
+<nav id="main-navigation">
+    <mat-toolbar>
+        <button mat-button>Home</button>
+        <button mat-button>Help</button>
+    </mat-toolbar>
+</nav>
