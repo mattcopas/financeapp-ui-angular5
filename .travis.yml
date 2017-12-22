@@ -7,7 +7,7 @@ install:
   - npm install
 
 script:
-  - npm test
+  - ng test --sourcemaps=false --browsers=ChromeHeadless --code-coverage=true --singleRun=true
 
 notifications:
   email:
