@@ -1,0 +1,29 @@
+<div class="login-form-container">
+
+    <form novalidate (ngSubmit)="login($event)">
+
+        <div>
+            <mat-form-field>
+                <input name="email" [(ngModel)]="email" [formControl]="emailFormControl" type="email" matInput placeholder="Email address">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <input name="password" [(ngModel)]="password" type="password" matInput placeholder="Password">
+            </mat-form-field>
+        </div>
+
+        <div class="submit-button-wrapper">
+            <button type="submit" color="primary" mat-raised-button>Login</button>
+        </div>
+
+    </form>
+
+</div>

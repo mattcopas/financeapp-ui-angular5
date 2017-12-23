@@ -1,8 +1,21 @@
 <!-- Mobile Navigation -->
 <nav id="mobile-navigation">
     <mat-menu #appMenu="matMenu">
-        <button mat-menu-item> Home </button>
-        <button mat-menu-item> Help </button>
+        <a routerLink="/">
+            <button mat-menu-item> Home </button>
+        </a>
+        <a *ngIf="userService.checkUserIsAuthenticated()" routerLink="/accounts">
+            <button mat-menu-item> Accounts </button>
+        </a>
+        <a *ngIf=" ! userService.checkUserIsAuthenticated()" routerLink="/login">
+            <button mat-menu-item> Login </button>
+        </a>
+        <button
+            (click)="logout()"
+            mat-menu-item
+            *ngIf="userService.checkUserIsAuthenticated()">
+            Log Out
+        </button>
     </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -13,7 +26,20 @@
 <!-- Main Navigation -->
 <nav id="main-navigation">
     <mat-toolbar>
-        <button mat-button>Home</button>
-        <button mat-button>Help</button>
+        <a routerLink="/">
+            <button mat-button>Home</button>
+        </a>
+        <a *ngIf="userService.checkUserIsAuthenticated()" routerLink="/accounts">
+            <button mat-button>Accounts</button>
+        </a>
+        <a *ngIf=" ! userService.checkUserIsAuthenticated()" routerLink="/login">
+            <button mat-button>Login</button>
+        </a>
+        <button
+            (click)="logout()"
+            mat-button
+            *ngIf="userService.checkUserIsAuthenticated()">
+            Log Out
+        </button>
     </mat-toolbar>
 </nav>

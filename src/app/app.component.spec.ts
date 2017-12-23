@@ -1,12 +1,18 @@
 import { TestBed, async } from '@angular/core/testing';
-import { MatTableModule, MatMenuModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { MatCardModule, MatTableModule, MatMenuModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
 import { AccountsService } from './services/accounts.service';
+import { FlashMessageService } from './services/flash-message.service';
+import { UserService } from './services/user.service';
 import { MockAccountsService } from './mocks/MockAccountsService';
+import { MockUserService } from './mocks/MockUserService';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,8 +22,11 @@ describe('AppComponent', () => {
         AccountsComponent,
         NavigationComponent
       ],
-      imports: [MatTableModule, MatMenuModule, MatIconModule, MatToolbarModule],
-      providers: [ {provide: AccountsService, useClass: MockAccountsService} ]
+      imports: [ FlashMessagesModule.forRoot(), MatCardModule, MatTableModule, MatMenuModule, MatIconModule, MatToolbarModule, RouterTestingModule ],
+      providers: [
+           { provide: AccountsService, useClass: MockAccountsService },
+           { provide: UserService, useClass: MockUserService },
+           FlashMessageService ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

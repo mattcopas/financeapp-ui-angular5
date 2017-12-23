@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Account } from '../models/Account';
 import { environment } from '../../environments/environment';
@@ -10,11 +10,10 @@ export class AccountsService {
     constructor(private httpClient: HttpClient) { }
 
     getRawAccountsData(): Observable<any> {
-        let token = 'b0a67e98-53fe-4338-9144-74bd9ac87661';
         let headers: HttpHeaders = new HttpHeaders({
-            Authorization: 'Bearer ' + token
+            Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
         });
-        return this.httpClient.get<any>(environment.apiUrl + 'accounts', {headers: headers});
+        return this.httpClient.get<any>(environment.apiUrl + 'accounts', {headers});
     };
 
     parseAccountsData(rawAccountsData): Account[] {

@@ -1,5 +1,5 @@
 import { async, TestBed, inject, getTestBed } from '@angular/core/testing';
-import { HttpClientModule, HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpHeaders, HttpRequest } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { AccountsService } from './accounts.service';
@@ -27,7 +27,7 @@ describe('AccountsService', () => {
 
     afterEach(() => {
         httpMock.verify();
-    })
+    });
 
     it('should be created', inject([AccountsService], (service: AccountsService) => {
         expect(service).toBeTruthy();

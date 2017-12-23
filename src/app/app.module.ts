@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import {
   MatAutocompleteModule,
@@ -43,13 +46,17 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { AccountsComponent } from './accounts/accounts.component';
 
 import { AccountsService } from './services/accounts.service';
-
+import { AppRoutesModule } from './/app-routes.module';
+import { LoginComponent } from './login/login.component';
+import { FlashMessageService } from './services/flash-message.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    AccountsComponent
+    AccountsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,9 +93,15 @@ import { AccountsService } from './services/accounts.service';
     MatToolbarModule,
     MatTooltipModule,
 
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+
+    FlashMessagesModule.forRoot(),
+
+    AppRoutesModule,
   ],
-  providers: [AccountsService],
+  providers: [AccountsService, FlashMessageService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
