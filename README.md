@@ -1,4 +1,4 @@
-# FinanceappUiAngular5
+# FinanceappUiAngular5 [![Build Status](https://travis-ci.org/mattcopas/financeapp-ui-angular5.svg?branch=develop)](https://travis-ci.org/mattcopas/financeapp-ui-angular5)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.3.
 
